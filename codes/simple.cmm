@@ -1,0 +1,50 @@
+* C- Compilation to Intermediate Code
+* File: testfiles/simple.cmm
+____________________________________________________________
+
+gcd:
+		i = 5
+		t1 = i > 4 
+		if_true t1 goto L1
+		arr[i] = 5
+		t2 = i < 1 
+		if_true t2 goto L3
+		arr[i] = 5
+		goto L4
+		
+	L3:
+		arr[i] = 10
+		i = 4
+		
+	L4:
+		goto L2
+		
+	L1:
+		arr[i] = 10
+		i = 4
+		
+	L2:
+		t3 = 3 * 4 
+		t4 = 5 + t3 
+		y = t4
+		t5 = arr[4] + 5 
+		y = t5
+		arr[i] = 5
+		t6 = y + 5 
+		return  t6
+		
+
+main:
+		t7 = 3 * 4 
+		t8 = 5 + t7 
+		a = t8
+		param a
+		t9 = call gcd, 1
+		a = t9
+		t10 = a + 5 
+		return  t10
+		
+
+____________________________________________________________
+
+* End of execution.

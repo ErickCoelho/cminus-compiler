@@ -1,0 +1,86 @@
+* C- Compilation to Intermediate Code
+* File: testfiles/sort.cmm
+____________________________________________________________
+
+minloc:
+		k = low
+		x = a[low]
+		t1 = low + 1 
+		i = t1
+		
+	L1:
+		t2 = i >= high 
+		if_true t2 goto L2
+		t3 = a[i] < x 
+		if_true t3 goto L3
+		goto L4
+		
+	L3:
+		x = a[i]
+		k = i
+		
+	L4:
+		t4 = i + 1 
+		i = t4
+		goto L1
+		
+	L2:
+		return  k
+		
+
+sort:
+		i = low
+		
+	L5:
+		t5 = high - 1 
+		t6 = i >= t5 
+		if_true t6 goto L6
+		param a
+		param i
+		param high
+		t7 = call minloc, 3
+		k = t7
+		t = a[k]
+		a[k] = a[i]
+		a[i] = t
+		t8 = i + 1 
+		i = t8
+		goto L5
+		
+	L6:
+		
+
+main:
+		i = 0
+		
+	L7:
+		t9 = i >= 10 
+		if_true t9 goto L8
+		t10 = call input, 0
+		y = t10
+		t11 = i + 1 
+		i = t11
+		goto L7
+		
+	L8:
+		param y
+		param 0
+		param 10
+		t12 = call sort, 3
+		i = 0
+		
+	L9:
+		t13 = i >= 10 
+		if_true t13 goto L10
+		param y
+		t14 = call output, 1
+		t15 = i + 1 
+		i = t15
+		goto L9
+		
+	L10:
+		
+
+____________________________________________________________
+
+* End of execution.
